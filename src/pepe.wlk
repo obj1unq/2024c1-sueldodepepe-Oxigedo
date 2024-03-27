@@ -49,9 +49,11 @@ object medioTiempo{
 
 object roque{
 	var bonoResultado = porcentaje
-	
+	method neto(){
+		return 28000
+	}
 	method categoria(){
-		return categoriaRoque
+		return self
 	}
 	
 	method bonoResultado(_bonoResultado){
@@ -59,13 +61,7 @@ object roque{
 	}
 	
 	method sueldo(){
-		return categoriaRoque.neto() + bonoResultado.bono(self) + 9000
-	}
-}
-
-object categoriaRoque{
-	method neto(){
-		return 28000
+		return self.neto() + bonoResultado.bono(self) + 9000
 	}
 }
 
@@ -118,7 +114,7 @@ object ajuste{
 
 object demagogico{
 	method bono(persona){
-		return if (persona.neto() < 18000) 500 else 300
+		return if (persona.categoria().neto() < 18000) 500 else 300
 	}
 }
 
@@ -145,8 +141,29 @@ object cadete {
 		return 20000
 	}
 }
+
 object nulo {
 	method bono(persona){
 		return 0
 	} 
+}
+
+object ernesto{
+	var companhero = pepe
+	var bonoPorPresentismo = normal
+	
+	method faltas(){
+		return 0
+	}
+	
+	method bonoPorPresentismo(_bonoPorPresentismo){
+		bonoPorPresentismo = _bonoPorPresentismo
+	}
+	method companhero(_companhero){
+		companhero = _companhero
+	}
+	
+	method sueldo(){
+		return companhero.categoria().neto() + bonoPorPresentismo.bono(self)
+	}
 }

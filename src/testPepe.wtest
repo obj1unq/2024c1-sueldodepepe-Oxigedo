@@ -30,5 +30,18 @@ test "pepe cadete, resultado porcentaje,presentismo normal, falto 1 dia"{
 	pepe.categoria(cadete)
 	assert.equals(23000,pepe.sueldo())
 }
+test "medio tiempo cadete, pepe medio tiempo, resultado porcentaje, presentismo demagogico y 1 falta, roque resultado monto fijo, ernesto companhero pepe presentismo ajuste" {
+	medioTiempo.categoriaBase(cadete)
+	pepe.categoria(medioTiempo)
+	pepe.bonoResultado(porcentaje)
+	pepe.bonoPorPresentismo(demagogico)
+	pepe.faltas(1)
+	roque.bonoResultado(montoFijo)
+	ernesto.companhero(pepe)
+	ernesto.bonoPorPresentismo(ajuste)
+	assert.equals(11500,pepe.sueldo())
+	assert.equals(37800,roque.sueldo())
+	assert.equals(10100,ernesto.sueldo())
+}
 	
 }
